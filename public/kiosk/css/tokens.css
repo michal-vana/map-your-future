@@ -1,0 +1,137 @@
+/* =========================================================
+   MAP YOUR FUTURE — design tokeny
+   Zdroj: docs/design.md v2.0, kap. 2.1–2.3. Sdílí kiosk i LED.
+   Hodnoty [OVĚŘIT] / [NÁVRH] se po potvrzení MetLife mění jen tady.
+   ========================================================= */
+
+/* Albert Sans — self-hosted fallback brand písma (OFL, latin-ext).
+   Soubory patří do assets/fonts/. Dokud tam nejsou, platí system-ui. */
+@font-face {
+  font-family: "Albert Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Albert Sans Regular"), local("AlbertSans-Regular"),
+       url("../../../assets/fonts/AlbertSans-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Albert Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local("Albert Sans Medium"), local("AlbertSans-Medium"),
+       url("../../../assets/fonts/AlbertSans-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Albert Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local("Albert Sans SemiBold"), local("AlbertSans-SemiBold"),
+       url("../../../assets/fonts/AlbertSans-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Albert Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Albert Sans Bold"), local("AlbertSans-Bold"),
+       url("../../../assets/fonts/AlbertSans-Bold.woff2") format("woff2");
+}
+
+:root {
+  /* --- 2.1 Paleta ------------------------------------------------ */
+
+  /* Plochy [NÁVRH] — odvozeno z tónu MetLife Dark Blue */
+  --ink-950: #00182A;   /* LED pozadí, S5, scrim modálů          */
+  --ink-900: #002238;   /* základní plocha tabletu               */
+  --ink-800: #002D4A;   /* karta, tlačítko odpovědi              */
+  --ink-700: #0A4163;   /* track progressu/slideru, pressed stav */
+
+  /* Značka [OVĚŘIT] */
+  --ml-blue:      #0090DA;
+  --ml-blue-dark: #0061A0;
+  --ml-green:     #A4CE4E;
+
+  /* Odvozené [NÁVRH] */
+  --ml-blue-300:  #5CB8E8;   /* modrá pro text/ikony, kde je čistá modrá málo kontrastní */
+
+  /* Text */
+  --white:    #FFFFFF;
+  --white-80: rgba(255,255,255,0.80);
+  --white-55: rgba(255,255,255,0.55);
+  --hairline: rgba(255,255,255,0.12);
+
+  /* Vyhodnocení */
+  --eval-good:  var(--ml-green);
+  --eval-watch: #FFC46B;
+  --eval-risk:  #FF9A8B;
+  --eval-fixed: var(--white-55);
+
+  /* --- 2.2 Typografie -------------------------------------------- */
+
+  --font-brand: "Effra", "Albert Sans", system-ui, sans-serif;
+
+  /* Návrhový pixel: rozměry z design.md × --px = fluidní škálování.
+     Tablet: základ 1200 × 1600 (portrét), řídí se menším poměrem.
+     LED si --px přepíše na základ 1920 × 1080. */
+  --px: min(calc(100vw / 1200), calc(100vh / 1600));
+
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  --ls-caps:    0.1em;    /* verzálky +8 až +12 %        */
+  --ls-text:    0;        /* běžný text a nadpisy         */
+  --ls-display: -0.02em;  /* velká čísla a display −1 až −2 % */
+
+  /* Tablet */
+  --fs-display: calc(120 * var(--px));  --lh-display: 1;
+  --fs-h1:      calc(56 * var(--px));   --lh-h1:      1.15;
+  --fs-h2:      calc(40 * var(--px));   --lh-h2:      1.2;
+  --fs-answer:  calc(32 * var(--px));   --lh-answer:  1.3;
+  --fs-body:    calc(28 * var(--px));   --lh-body:    1.4;
+  --fs-label:   calc(22 * var(--px));   --lh-label:   1.2;
+  --fs-legal:   calc(18 * var(--px));   --lh-legal:   1.45;
+
+  /* LED */
+  --fs-led-hero:    calc(280 * var(--px));
+  --fs-led-number:  calc(200 * var(--px));
+  --fs-led-h1:      calc(120 * var(--px));
+  --fs-led-label:   calc(48 * var(--px));
+  --fs-led-caption: calc(32 * var(--px));
+
+  /* --- 2.3 Spacing, rádiusy, elevace ------------------------------ */
+
+  /* Grid 8 px: 8 / 16 / 24 / 32 / 48 / 64 / 96 / 128 */
+  --space-1: calc(8 * var(--px));
+  --space-2: calc(16 * var(--px));
+  --space-3: calc(24 * var(--px));
+  --space-4: calc(32 * var(--px));
+  --space-5: calc(48 * var(--px));
+  --space-6: calc(64 * var(--px));
+  --space-7: calc(96 * var(--px));
+  --space-8: calc(128 * var(--px));
+
+  --grid-columns: 12;
+
+  /* Tablet: okraj 64, gutter 24, bezpečná zóna 48 od okraje displeje */
+  --tablet-margin: calc(64 * var(--px));
+  --tablet-gutter: calc(24 * var(--px));
+  --tablet-safe:   calc(48 * var(--px));
+
+  /* LED: okraj 96, gutter 32, safe area 5 % od každého okraje */
+  --led-margin: calc(96 * var(--px));
+  --led-gutter: calc(32 * var(--px));
+  --led-safe-x: 5vw;
+  --led-safe-y: 5vh;
+
+  /* Rádiusy [NÁVRH] */
+  --radius-card:  calc(24 * var(--px));
+  --radius-pill:  999px;
+  --radius-panel: 0;
+
+  /* Elevace: žádné stíny — posun plochy o stupeň + hairline */
+  --border-hairline: 1px solid var(--hairline);
+}

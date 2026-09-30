@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Map Your Future</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/kiosk.css">
+</head>
+<body>
+  <main class="app" id="app">
+    <div class="progress" id="progress" hidden>
+      <div class="progress__track" id="progress-track" role="progressbar" aria-valuemin="1">
+        <div class="progress__fill" id="progress-fill"></div>
+      </div>
+      <p class="progress__label label" id="progress-label"></p>
+    </div>
+    <div class="screens" id="screens"></div>
+    <img class="brand-logo" id="brand-logo" alt="" draggable="false">
+    <div id="dialog-root"></div>
+  </main>
+
+  <script src="js/config.demo.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
