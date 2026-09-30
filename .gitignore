@@ -1,0 +1,14 @@
+# Local configuration (real credentials) – never commit
+api/config.php
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+/vendor/
